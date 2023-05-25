@@ -1347,6 +1347,9 @@ video {
 .p-2\.5 {
   padding: 0.625rem;
 }
+.p-6 {
+  padding: 1.5rem;
+}
 .px-1 {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
@@ -1414,6 +1417,10 @@ video {
 .py-5 {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+}
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 .pb-1 {
   padding-bottom: 0.25rem;
@@ -1501,6 +1508,9 @@ video {
 .font-normal {
   font-weight: 400;
 }
+.font-light {
+  font-weight: 300;
+}
 .uppercase {
   text-transform: uppercase;
 }
@@ -1521,6 +1531,9 @@ video {
 }
 .leading-none {
   line-height: 1;
+}
+.leading-tight {
+  line-height: 1.25;
 }
 .tracking-tight {
   letter-spacing: -0.025em;
@@ -1594,6 +1607,14 @@ video {
 .text-red-300 {
   --tw-text-opacity: 1;
   color: rgb(252 165 165 / var(--tw-text-opacity));
+}
+.text-orange-900 {
+  --tw-text-opacity: 1;
+  color: rgb(124 45 18 / var(--tw-text-opacity));
+}
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 .line-through {
   text-decoration-line: line-through;
@@ -1992,6 +2013,10 @@ body {
     display: none;
   }
 
+  .dark\:border {
+    border-width: 1px;
+  }
+
   .dark\:border-gray-700 {
     --tw-border-opacity: 1;
     border-color: rgb(55 65 81 / var(--tw-border-opacity));
@@ -2076,6 +2101,10 @@ body {
     color: rgb(156 163 175 / var(--tw-placeholder-opacity));
   }
 
+  .dark\:ring-offset-gray-800 {
+    --tw-ring-offset-color: #1f2937;
+  }
+
   .dark\:hover\:bg-blue-700:hover {
     --tw-bg-opacity: 1;
     background-color: rgb(29 78 216 / var(--tw-bg-opacity));
@@ -2115,6 +2144,11 @@ body {
     --tw-ring-opacity: 1;
     --tw-ring-color: rgb(55 65 81 / var(--tw-ring-opacity));
   }
+
+  .dark\:focus\:ring-blue-500:focus {
+    --tw-ring-opacity: 1;
+    --tw-ring-color: rgb(59 130 246 / var(--tw-ring-opacity));
+  }
 }
 
 @media (min-width: 640px) {
@@ -2142,6 +2176,10 @@ body {
 
   .sm\:flex {
     display: flex;
+  }
+
+  .sm\:max-w-md {
+    max-width: 28rem;
   }
 
   .sm\:grid-cols-2 {
@@ -2178,6 +2216,10 @@ body {
     margin-bottom: calc(0px * var(--tw-space-y-reverse));
   }
 
+  .sm\:p-8 {
+    padding: 2rem;
+  }
+
   .sm\:px-6 {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -2200,6 +2242,11 @@ body {
   .sm\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
+  }
+
+  .sm\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 
   .sm\:duration-700 {
@@ -2248,6 +2295,10 @@ body {
 
   .md\:hidden {
     display: none;
+  }
+
+  .md\:h-screen {
+    height: 100vh;
   }
 
   .md\:w-1\/2 {
@@ -2347,6 +2398,11 @@ body {
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
+
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -2432,6 +2488,11 @@ body {
     padding-bottom: 2rem;
   }
 
+  .lg\:py-0 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
   .lg\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -2509,6 +2570,10 @@ body {
 
   .xl\:p-8 {
     padding: 2rem;
+  }
+
+  .xl\:p-0 {
+    padding: 0px;
   }
 
   .xl\:text-2xl {
