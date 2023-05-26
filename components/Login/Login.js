@@ -1,13 +1,34 @@
-"use client";
 import Link from "next/link";
-import React, { useState ,useContext} from "react";
+import React, { useState, useContext } from "react";
 import { UserContext } from "../../context/userContext";
+import { userLogin } from "@/lib/shopify";
+// import { useRouter } from "next/router";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
-  const { login,setLogin ,HandelLogin} = useContext(UserContext)
+  const { login, setLogin, HandelLogin } = useContext(UserContext);
+  // const router = useRouter();
+
+  const handelLogin = async()=>{
+
+   await userLogin(email,password)
+    .then((res)=>{
+      console.log("res",res)
+      window.location.href ="/"
+      HandelLogin(res.customerAccessTokenCreate.customerAccessToken.accessToken);
+      setEmail("");
+    setPassword("");
+    setRememberMe(false);
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+    // console.log(res.customerAccessTokenCreate.customerAccessToken.accessToken)
+
+   
+  }
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -28,10 +49,11 @@ function Login() {
     // ...
 
     // Reset form state
-    setEmail("");
-    setPassword("");
-    setRememberMe(false);
-    HandelLogin("token")
+    
+    handelLogin()
+   
+    // router.push("/");
+    // window.location.href ="/"
   };
 
   return (

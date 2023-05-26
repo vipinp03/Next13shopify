@@ -30,7 +30,7 @@ export default function ShopProvider({ children }) {
 
   async function addToCart(addedItem) {
     const newItem = {...addedItem}
-    console.log(newItem)
+    console.log("newItem",newItem)
     setCartOpen(true)
 
     if (cart.length === 0) {

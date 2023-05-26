@@ -2,6 +2,7 @@
 import React,{useState,useContext} from "react";
 import Link from "next/link";
 import { UserContext } from "../../context/userContext";
+import { userRegister } from "@/lib/shopify";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -9,6 +10,26 @@ function SignUp() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const { login ,HandelLogin} = useContext(UserContext)
+
+  const handelSignUp =async()=>{
+   
+    await userRegister(email,"dear","digital",password,"+910000000000")
+    .then((res)=>{
+      console.log(res)
+      if(res.customerCreate.customer === null){
+        setErrors(res.customerCreate.customerUserErrors)
+
+      }else{
+        window.location.href ="/login"
+      }
+  
+    })
+    .catch((err)=>{
+      console.log("err",err)
+    })
+    
+     
+  }
   const handleSubmit = async(e) => {
     e.preventDefault();
 
@@ -37,7 +58,7 @@ function SignUp() {
     }
     // Form is valid, proceed with submission
     setErrors([]);
-    setLogin(true)
+    handelSignUp()
     HandelLogin("token")
     // submit logic here
 

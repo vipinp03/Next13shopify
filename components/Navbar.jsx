@@ -19,8 +19,8 @@ const Navbar = () => {
   });
   return (
     <>
-      <nav className="bg-[#4b148b]">
-        <div className="w-full mx-auto flex items-center justify-between h-16 px-2 border-b border-solid border-slate-600">
+      <nav className="bg-[#4b148b] px-20 ">
+        <div className="w-full mx-auto flex items-center justify-between h-16 border-b border-solid border-slate-600">
           <div className="flex-shrink-0 font-bold tracking-wider text-white text-2xl">
             HeadLess <span className="text-orange-500">{login}</span>
           </div>
