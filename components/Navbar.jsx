@@ -1,6 +1,7 @@
 "use client";
 import { useContext, useState } from "react";
 import { CartContext } from "../context/shopContext";
+import { UserContext } from "../context/userContext";
 import MiniCart from "./Cart/MiniCart";
 import Menu from "./Nav/Menu";
 import Search from "./Search/search";
@@ -10,7 +11,8 @@ import Link from "next/link";
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const { cart, cartOpen, setCartOpen } = useContext(CartContext);
-
+  const { login } = useContext(UserContext)
+  console.log("kkk",login)
   let cartQuantity = 0;
   cart.map((item) => {
     return (cartQuantity += item?.variantQuantity);
@@ -20,7 +22,7 @@ const Navbar = () => {
       <nav className="bg-[#4b148b]">
         <div className="w-full mx-auto flex items-center justify-between h-16 px-2 border-b border-solid border-slate-600">
           <div className="flex-shrink-0 font-bold tracking-wider text-white text-2xl">
-            HeadLess <span className="text-orange-500">Project</span>
+            HeadLess <span className="text-orange-500">{login}</span>
           </div>
           {/* MIDDEL SECTION */}
           <div className="hidden md:block">
@@ -57,7 +59,7 @@ const Navbar = () => {
               </button>
               <MiniCart cart={cart} />
             </div>
-            <Link href={"/profile"} className="hidden md:block">
+            <Link href={login === true ?"/profile":"/login"} className="hidden md:block">
               <img
                 class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -117,9 +119,10 @@ const Navbar = () => {
                 </button>
                 <MiniCart cart={cart} />
               </div>
-              <Link href={"/profile"} className="md:hidden">
+            
+              <Link href={ login === true ?"/profile":"/login"} className="md:hidden">
               <img
-                class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+                className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                 alt=""
               />
