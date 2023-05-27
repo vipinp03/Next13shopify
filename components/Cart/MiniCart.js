@@ -6,11 +6,16 @@ import Link from 'next/link'
 import { CartContext } from '../../context/shopContext'
 import { formatter } from '../../utils/helpers'
 
+import { UserContext } from '@/context/userContext'
+
 
 export default function MiniCart({ cart }) {
   const cancelButtonRef = useRef()
 
   const { cartOpen, setCartOpen, checkoutUrl, removeCartItem, clearCart, cartLoading, incrementCartItem, decrementCartItem } = useContext(CartContext)
+
+  const {login, setLogin} = useContext(UserContext)
+  console.log(login, "Hai bhai login", typeof(checkoutUrl))
 
   let cartTotal = 0
   cart.map(item => {
@@ -147,12 +152,20 @@ export default function MiniCart({ cart }) {
                         </div>
                         <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                         <div className="mt-6">
+                          {login ? 
                           <a
-                            href={checkoutUrl}
-                            className={`flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-gray-800 ${cartLoading ? "cursor-not-allowed" : "cursor-pointer"}`}
-                          >
-                            Checkout
-                          </a>
+                          href={ checkoutUrl }
+                          className={`flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-gray-800 ${cartLoading ? "cursor-not-allowed" : "cursor-pointer"}`}
+                        >
+                          Checkout
+                        </a> :
+                        <a
+                        href="/login"
+                        className={`flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-gray-800 ${cartLoading ? "cursor-not-allowed" : "cursor-pointer"}`}
+                      >
+                        Login to checkout
+                      </a>
+                        }
                         </div>
                         <div className="flex justify-center mt-6 text-sm text-center text-gray-500">
                           <p>

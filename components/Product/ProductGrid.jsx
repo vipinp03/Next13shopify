@@ -2,18 +2,25 @@ import { useState, useEffect } from 'react';
 import { getProductsData } from '@/lib/shopify';
 import Link from 'next/link';
 
-export default function ProductGrid() {
+export default function ProductGrid({collectionProductData}) {
   const [products, setProducts] = useState([]);
+  
 
+  const fetchProducts = async()=>{
+    const res = await getProductsData();
+    setProducts(res);
+  }
   useEffect(() => {
-    async function fetchProducts() {
-      const res = await getProductsData();
-      setProducts(res);
-      // console.log(res)
-    }
-
+   
     fetchProducts();
   }, []);
+  useEffect(()=>{
+    if(collectionProductData.length > 0){
+      setProducts(collectionProductData);
+    }else{
+      fetchProducts()
+    }
+  },[collectionProductData])
 
   return (
     <div className="bg-white">

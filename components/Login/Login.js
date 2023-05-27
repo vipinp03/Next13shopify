@@ -12,7 +12,7 @@ function Login() {
   // const router = useRouter();
 
   const handelLogin = async()=>{
-
+    console.log(login,"Login data hai bhai")
    await userLogin(email,password)
     .then((res)=>{
       console.log("res",res)
@@ -134,7 +134,7 @@ function Login() {
                   Sign in
                 </button>
                 <p class="text-sm font-light text-gray-900 ">
-                  Don’t have an account yet?{" "}
+                  Don't have an account yet?{" "}
                   <Link
                     href="/signup"
                     class="font-medium text-gray-600 hover:underline "

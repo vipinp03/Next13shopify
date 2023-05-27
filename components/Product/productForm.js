@@ -85,7 +85,7 @@ export default function ProductForm({ product }) {
   }, [productInventory, selectedVariant])
 
   return (
-    <div className="flex flex-col w-full p-4 shadow-lg rounded-2xl md:w-1/3">
+    <div className="flex flex-col w-full p-4 shadow-lg rounded-2xl md:max-w-[400px]">
       <h2 className="text-2xl font-bold">{product.title}</h2>
       <span className="pb-3">{formatter.format(product.variants.edges[0].node.priceV2.amount)}</span>
       {/* {

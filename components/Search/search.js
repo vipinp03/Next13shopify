@@ -1,20 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
+import { getProductBysearch } from '@/lib/shopify';
+import Link from 'next/link';
 
 const Search = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState([]);
 
-  const handleSearch = () => {
+  const handleSearch = async() => {
     // Perform your search logic here based on the searchQuery
     // For simplicity, let's assume the results are fetched from an API
     // You can replace this with your own API integration code
 
     // Example API call
-    fetch(`https://api.example.com/search?query=${searchQuery}`)
-      .then(response => response.json())
-      .then(data => setResults(data.results))
-      .catch(error => console.log(error));
+    await getProductBysearch(searchQuery)
+    .then((res)=>{
+      setResults(res.products.edges)
+      console.log("data",res.products.edges)
+    })
+    // fetch(`https://api.example.com/search?query=${searchQuery}`)
+    //   .then(response => response.json())
+    //   .then(data => setResults(data.results))
+    //   .catch(error => console.log(error));
   };
+  useEffect(()=>{
+if(searchQuery === ""){
+  setResults([])
+}
+  },[searchQuery])
 
   return (
     <div>
@@ -38,14 +50,19 @@ const Search = () => {
           Go
         </button>
       </div>
-      {searchQuery !== ""  &&
-      <div className="mt-8">
+      {results.length > 0 &&
+      <div className=" max-w-xl  bg-red-500 relative">
         {results.length > 0 ? (
-          <ul className="list-disc pl-8">
+          <div className=" max-w-xl bg-slate-400 h-60 rounded-sm p-2 absolute">
             {results.map((result, index) => (
-              <li key={index}>{result}</li>
+              <div key={index} className='flex items-center space-x-3'>
+               <Link href={`/product/${result.node.handle}`}>
+               <img className='w-10 h-10 rounded-sm' src={result.node.featuredImage.originalSrc} alt={result.node.title}/>
+                <h1 className=' text-xs'>{result.node.title}</h1>
+               </Link>
+              </div>
             ))}
-          </ul>
+          </div>
         ) : (
           <p>No results found.</p>
         )}
