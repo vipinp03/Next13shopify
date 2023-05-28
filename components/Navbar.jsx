@@ -1,22 +1,36 @@
 "use client";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/shopContext";
-import { UserContext } from "../context/userContext";
+import { UserContext} from "../context/userContext";
 import MiniCart from "./Cart/MiniCart";
 import Menu from "./Nav/Menu";
 import Search from "./Search/search";
 import Language from "./Search/Language";
 import Link from "next/link";
+import { getLanguage } from "@/lib/shopify";
+import useSWR from 'swr'
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const { cart, cartOpen, setCartOpen } = useContext(CartContext);
+  const [languageData,setlanguageData]=useState([])
+  const { cart, cartOpen, setCartOpen ,selectLang,setSelectLang} = useContext(CartContext);
   const { login } = useContext(UserContext)
-  console.log("kkk",login)
+  const { data: language } = useSWR(
+    [ 'market'], getLanguage,
+    { errorRetryCount: 3 }
+  )
   let cartQuantity = 0;
   cart.map((item) => {
     return (cartQuantity += item?.variantQuantity);
   });
+
+  useEffect(()=>{
+    if(language !== undefined){
+      console.log("language",language)
+      setlanguageData(language.localization.availableLanguages)
+    }
+   
+  },[language])
   return (
     <>
       <nav className="bg-[#4b148b] px-20 ">
@@ -34,7 +48,7 @@ const Navbar = () => {
               <Search />
             </div>
             <div>
-              <Language />
+              <Language languageData={languageData}/>
             </div>
             <div className="hidden md:block mx-6 md:mx-2">
               <button

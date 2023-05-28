@@ -7,6 +7,7 @@ const UserContext = createContext()
 
 export default function UserProvider({ children }) {
   const [login, setLogin] = useState(false)
+  const [selectLang,setSelectLang]=useState("")
   
   
 
@@ -26,7 +27,7 @@ export default function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{login,setLogin,HandelLogin}}>
+    <UserContext.Provider value={{login,setLogin,HandelLogin,selectLang,setSelectLang}}>
       {children}
     </UserContext.Provider>
   )
