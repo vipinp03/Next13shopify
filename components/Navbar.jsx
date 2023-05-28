@@ -74,14 +74,14 @@ const Navbar = () => {
               <MiniCart cart={cart} />
             </div>
             {login?
-            <Link href={login === true ?"/profile":"/login"} className="hidden md:block">
+            <Link href={login === true ?"/profile":"/Login"} className="hidden md:block">
             <img
               class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
               alt=""
             />
           </Link>:
-          <Link href={"/login"} className="bg-orange-500 p-1 cursor-pointer text-white rounded-sm"> Login</Link>
+          <Link href={"/Login"} className="bg-orange-500 p-1 cursor-pointer text-white rounded-sm"> Login</Link>
           }
           </div>
 
@@ -136,13 +136,13 @@ const Navbar = () => {
                 </button>
                 <MiniCart cart={cart} />
               </div>
-            {login?  <Link href={ login === true ?"/profile":"/login"} className="md:hidden">
+            {login?  <Link href={ login === true ?"/profile":"/Login"} className="md:hidden">
               <img
                 className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
                 src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                 alt=""
               />
-            </Link>: <Link href={"/login"} > Login</Link>}
+            </Link>: <Link href={"/Login"} > Login</Link>}
             
             </div>
           )}

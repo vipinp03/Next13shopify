@@ -175,7 +175,7 @@ export default function MiniCart({ cart }) {
                          
                         </Link> :
                         <a
-                        href="/login"
+                        href="/Login"
                         className={`flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-gray-800 ${cartLoading ? "cursor-not-allowed" : "cursor-pointer"}`}
                       >
                         Login to checkout

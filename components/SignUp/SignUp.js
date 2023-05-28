@@ -159,7 +159,7 @@ function SignUp() {
                 <p class="text-sm font-light text-gray-600">
                   Already have an account?{" "}
                   <Link
-                    href="/login"
+                    href="/Login"
                     class="font-medium text-gray-600 hover:underline "
                   >
                     Login here
