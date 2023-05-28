@@ -143,7 +143,9 @@ export default function ShopProvider({ children }) {
       clearCart,
       cartLoading,
       incrementCartItem,
-      decrementCartItem
+      decrementCartItem,
+      checkoutId,
+      setCart
     }}>
       {children}
     </CartContext.Provider>

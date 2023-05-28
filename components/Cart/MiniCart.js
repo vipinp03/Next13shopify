@@ -1,4 +1,4 @@
-import { Fragment, useContext, useRef } from 'react'
+import { Fragment, useContext, useRef ,useEffect} from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
@@ -7,12 +7,14 @@ import { CartContext } from '../../context/shopContext'
 import { formatter } from '../../utils/helpers'
 
 import { UserContext } from '@/context/userContext'
+import { CheckoutStatus } from '@/lib/shopify'
+import useSWR from 'swr'
 
 
 export default function MiniCart({ cart }) {
   const cancelButtonRef = useRef()
 
-  const { cartOpen, setCartOpen, checkoutUrl, removeCartItem, clearCart, cartLoading, incrementCartItem, decrementCartItem } = useContext(CartContext)
+  const { cartOpen, setCartOpen, checkoutUrl, removeCartItem, clearCart, cartLoading, incrementCartItem, decrementCartItem,checkoutId,setCart} = useContext(CartContext)
 
   const {login, setLogin} = useContext(UserContext)
   console.log(login, "Hai bhai login", typeof(checkoutUrl))
@@ -21,6 +23,17 @@ export default function MiniCart({ cart }) {
   cart.map(item => {
     cartTotal += item?.variantPrice * item?.variantQuantity
   })
+  const { data: status } = useSWR(
+    [ checkoutId], CheckoutStatus,
+    { errorRetryCount: 3 }
+  )
+
+  
+  useEffect(()=>{
+    if(status !=="" && status !== null){
+      setCart([])
+    }
+      },[status])
 
   return (
     <Transition.Root show={cartOpen} as={Fragment}>
@@ -153,12 +166,14 @@ export default function MiniCart({ cart }) {
                         <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                         <div className="mt-6">
                           {login ? 
-                          <a
+                          <Link
                           href={ checkoutUrl }
+                          target="_blank" rel="noopener noreferrer"
                           className={`flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-gray-800 ${cartLoading ? "cursor-not-allowed" : "cursor-pointer"}`}
                         >
                           Checkout
-                        </a> :
+                         
+                        </Link> :
                         <a
                         href="/login"
                         className={`flex items-center justify-center px-6 py-3 text-base font-medium text-white bg-black border border-transparent rounded-md shadow-sm hover:bg-gray-800 ${cartLoading ? "cursor-not-allowed" : "cursor-pointer"}`}

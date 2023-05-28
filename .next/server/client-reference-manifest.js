@@ -1029,7 +1029,7 @@ self.__RSC_MANIFEST={
         "id": "(sc_client)/./context/userContext.js",
         "name": "*",
         "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
+          "app/profile/page:static/chunks/app/profile/page.js"
         ],
         "async": false
       },
@@ -1037,7 +1037,7 @@ self.__RSC_MANIFEST={
         "id": "(sc_client)/./context/userContext.js",
         "name": "",
         "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
+          "app/profile/page:static/chunks/app/profile/page.js"
         ],
         "async": false
       },
@@ -1045,7 +1045,7 @@ self.__RSC_MANIFEST={
         "id": "(sc_client)/./context/userContext.js",
         "name": "UserConsumer",
         "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
+          "app/profile/page:static/chunks/app/profile/page.js"
         ],
         "async": false
       },
@@ -1053,7 +1053,7 @@ self.__RSC_MANIFEST={
         "id": "(sc_client)/./context/userContext.js",
         "name": "UserContext",
         "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
+          "app/profile/page:static/chunks/app/profile/page.js"
         ],
         "async": false
       },
@@ -1061,7 +1061,7 @@ self.__RSC_MANIFEST={
         "id": "(sc_client)/./context/userContext.js",
         "name": "default",
         "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
+          "app/profile/page:static/chunks/app/profile/page.js"
         ],
         "async": false
       }
@@ -1071,7 +1071,7 @@ self.__RSC_MANIFEST={
         "id": "(sc_client)/./node_modules/next/dist/client/link.js",
         "name": "*",
         "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
+          "app/product/page:static/chunks/app/product/page.js"
         ],
         "async": false
       },
@@ -1079,12 +1079,64 @@ self.__RSC_MANIFEST={
         "id": "(sc_client)/./node_modules/next/dist/client/link.js",
         "name": "",
         "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
+          "app/product/page:static/chunks/app/product/page.js"
         ],
         "async": false
       },
       "default": {
         "id": "(sc_client)/./node_modules/next/dist/client/link.js",
+        "name": "default",
+        "chunks": [
+          "app/product/page:static/chunks/app/product/page.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/product/[slug]/page.js": {
+      "*": {
+        "id": "(sc_client)/./app/product/[slug]/page.js",
+        "name": "*",
+        "chunks": [
+          "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./app/product/[slug]/page.js",
+        "name": "",
+        "chunks": [
+          "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/product/[slug]/page.js",
+        "name": "default",
+        "chunks": [
+          "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./app/login/page.js": {
+      "*": {
+        "id": "(sc_client)/./app/login/page.js",
+        "name": "*",
+        "chunks": [
+          "app/login/page:static/chunks/app/login/page.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./app/login/page.js",
+        "name": "",
+        "chunks": [
+          "app/login/page:static/chunks/app/login/page.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./app/login/page.js",
         "name": "default",
         "chunks": [
           "app/login/page:static/chunks/app/login/page.js"
@@ -1166,58 +1218,6 @@ self.__RSC_MANIFEST={
         "name": "default",
         "chunks": [
           "app/profile/page:static/chunks/app/profile/page.js"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./app/product/[slug]/page.js": {
-      "*": {
-        "id": "(sc_client)/./app/product/[slug]/page.js",
-        "name": "*",
-        "chunks": [
-          "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./app/product/[slug]/page.js",
-        "name": "",
-        "chunks": [
-          "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/product/[slug]/page.js",
-        "name": "default",
-        "chunks": [
-          "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./app/login/page.js": {
-      "*": {
-        "id": "(sc_client)/./app/login/page.js",
-        "name": "*",
-        "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./app/login/page.js",
-        "name": "",
-        "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./app/login/page.js",
-        "name": "default",
-        "chunks": [
-          "app/login/page:static/chunks/app/login/page.js"
         ],
         "async": false
       }
@@ -3400,7 +3400,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./context/userContext.js",
       "name": "*",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
+        "app/profile/page:static/chunks/app/profile/page.js"
       ],
       "async": false
     },
@@ -3408,7 +3408,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./context/userContext.js",
       "name": "",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
+        "app/profile/page:static/chunks/app/profile/page.js"
       ],
       "async": false
     },
@@ -3416,7 +3416,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./context/userContext.js",
       "name": "UserConsumer",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
+        "app/profile/page:static/chunks/app/profile/page.js"
       ],
       "async": false
     },
@@ -3424,7 +3424,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./context/userContext.js",
       "name": "UserContext",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
+        "app/profile/page:static/chunks/app/profile/page.js"
       ],
       "async": false
     },
@@ -3432,7 +3432,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./context/userContext.js",
       "name": "default",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
+        "app/profile/page:static/chunks/app/profile/page.js"
       ],
       "async": false
     },
@@ -3440,7 +3440,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./node_modules/next/dist/client/link.js",
       "name": "*",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
+        "app/product/page:static/chunks/app/product/page.js"
       ],
       "async": false
     },
@@ -3448,7 +3448,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./node_modules/next/dist/client/link.js",
       "name": "*",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
+        "app/product/page:static/chunks/app/product/page.js"
       ],
       "async": false
     },
@@ -3456,7 +3456,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./node_modules/next/dist/client/link.js",
       "name": "",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
+        "app/product/page:static/chunks/app/product/page.js"
       ],
       "async": false
     },
@@ -3464,7 +3464,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./node_modules/next/dist/client/link.js",
       "name": "",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
+        "app/product/page:static/chunks/app/product/page.js"
       ],
       "async": false
     },
@@ -3472,12 +3472,60 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./node_modules/next/dist/client/link.js",
       "name": "default",
       "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
+        "app/product/page:static/chunks/app/product/page.js"
       ],
       "async": false
     },
     "/Users/vipinpandey/Desktop/project/node_modules/next/dist/esm/client/link.js#default": {
       "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "default",
+      "chunks": [
+        "app/product/page:static/chunks/app/product/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/app/product/[slug]/page.js": {
+      "id": "(app-client)/./app/product/[slug]/page.js",
+      "name": "*",
+      "chunks": [
+        "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/app/product/[slug]/page.js#": {
+      "id": "(app-client)/./app/product/[slug]/page.js",
+      "name": "",
+      "chunks": [
+        "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/app/product/[slug]/page.js#default": {
+      "id": "(app-client)/./app/product/[slug]/page.js",
+      "name": "default",
+      "chunks": [
+        "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/app/login/page.js": {
+      "id": "(app-client)/./app/login/page.js",
+      "name": "*",
+      "chunks": [
+        "app/login/page:static/chunks/app/login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/app/login/page.js#": {
+      "id": "(app-client)/./app/login/page.js",
+      "name": "",
+      "chunks": [
+        "app/login/page:static/chunks/app/login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/app/login/page.js#default": {
+      "id": "(app-client)/./app/login/page.js",
       "name": "default",
       "chunks": [
         "app/login/page:static/chunks/app/login/page.js"
@@ -3553,54 +3601,6 @@ self.__RSC_MANIFEST={
       "name": "default",
       "chunks": [
         "app/profile/page:static/chunks/app/profile/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/app/product/[slug]/page.js": {
-      "id": "(app-client)/./app/product/[slug]/page.js",
-      "name": "*",
-      "chunks": [
-        "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/app/product/[slug]/page.js#": {
-      "id": "(app-client)/./app/product/[slug]/page.js",
-      "name": "",
-      "chunks": [
-        "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/app/product/[slug]/page.js#default": {
-      "id": "(app-client)/./app/product/[slug]/page.js",
-      "name": "default",
-      "chunks": [
-        "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/app/login/page.js": {
-      "id": "(app-client)/./app/login/page.js",
-      "name": "*",
-      "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/app/login/page.js#": {
-      "id": "(app-client)/./app/login/page.js",
-      "name": "",
-      "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/app/login/page.js#default": {
-      "id": "(app-client)/./app/login/page.js",
-      "name": "default",
-      "chunks": [
-        "app/login/page:static/chunks/app/login/page.js"
       ],
       "async": false
     }
