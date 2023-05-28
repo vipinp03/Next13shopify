@@ -14,6 +14,9 @@ self.__RSC_CSS_MANIFEST={
     ],
     "/Users/vipinpandey/Desktop/project/app/login/page": [
       "/Users/vipinpandey/Desktop/project/app/globals.css"
+    ],
+    "/Users/vipinpandey/Desktop/project/app/product/page": [
+      "/Users/vipinpandey/Desktop/project/app/globals.css"
     ]
   }
 }
