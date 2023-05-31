@@ -12,15 +12,17 @@ import {
 } from "@heroicons/react/solid";
 
 import ProductGrid from "./ProductGrid";
-import { getCollections, getCollectionsByHandle } from "@/lib/shopify";
+import {
+  FilterProducts,
+  getCollections,
+  getCollectionsByHandle,
+} from "@/lib/shopify";
 import Link from "next/link";
+import { getAllTags } from "@/lib/shopify";
 
 const sortOptions = [
-  { name: "Most Popular", href: "#", current: true },
-  { name: "Best Rating", href: "#", current: false },
-  { name: "Newest", href: "#", current: false },
-  { name: "Price: Low to High", href: "#", current: false },
-  { name: "Price: High to Low", href: "#", current: false },
+  { name: "Price: Low to High", value: false },
+  { name: "Price: High to Low", value: true },
 ];
 const subCategories = [
   { name: "Totes", href: "#" },
@@ -29,43 +31,7 @@ const subCategories = [
   { name: "Hip Bags", href: "#" },
   { name: "Laptop Sleeves", href: "#" },
 ];
-const filters = [
-  {
-    id: "color",
-    name: "Color",
-    options: [
-      { value: "white", label: "White", checked: false },
-      { value: "beige", label: "Beige", checked: false },
-      { value: "blue", label: "Blue", checked: true },
-      { value: "brown", label: "Brown", checked: false },
-      { value: "green", label: "Green", checked: false },
-      { value: "purple", label: "Purple", checked: false },
-    ],
-  },
-  {
-    id: "category",
-    name: "Category",
-    options: [
-      { value: "new-arrivals", label: "New Arrivals", checked: false },
-      { value: "sale", label: "Sale", checked: false },
-      { value: "travel", label: "Travel", checked: true },
-      { value: "organization", label: "Organization", checked: false },
-      { value: "accessories", label: "Accessories", checked: false },
-    ],
-  },
-  {
-    id: "size",
-    name: "Size",
-    options: [
-      { value: "2l", label: "2L", checked: false },
-      { value: "6l", label: "6L", checked: false },
-      { value: "12l", label: "12L", checked: false },
-      { value: "18l", label: "18L", checked: false },
-      { value: "20l", label: "20L", checked: false },
-      { value: "40l", label: "40L", checked: true },
-    ],
-  },
-];
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -75,6 +41,72 @@ function productFilterCollection() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [collectionData, setConllectionData] = useState([]);
   const [collectionProductData, setCollectionProductData] = useState([]);
+  const [filters, setFilters] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState([]);
+  const [selectedPriceFilter, setSelectedPriceFilter] = useState(false);
+
+  // Fetch all tags 
+  const FetchAllTags = async () => {
+    await getAllTags()
+      .then((res) => {
+        // Assuming 'response' contains the GraphQL API response
+        const products = res.products.edges;
+
+        // Extract tags from the products and flatten them into a single array
+        const allTags = products.flatMap(({ node }) => node.tags);
+
+        // Remove empty tags
+        const nonEmptyTags = allTags.filter((tag) => tag.trim() !== "");
+        // Remove duplicate tags
+        const uniqueTags = [...new Set(nonEmptyTags)];
+        // Assuming 'uniqueTags' contains the array of unique tags
+        const tagOptions = uniqueTags.map((tag) => ({
+          value: tag.toLowerCase(),
+          label: tag,
+          checked: false,
+        }));
+
+        const tagObject = {
+          id: "tag",
+          name: "Tags",
+          options: tagOptions,
+        };
+        setFilters([tagObject]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+// Fetching filter data 
+  const GetFilterData = (Filterselect) => {
+    FilterProducts(Filterselect,selectedPriceFilter)
+      .then((res) => {
+        setCollectionProductData(res.products.edges);
+        console.log("GetFilterData", res.products.edges);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+// Filter select on change
+  const HandelFilterSelection = (e) => {
+    let defaultValue = "tag";
+    let result = `${defaultValue}:${e.target.value}`;
+    if (e.target.checked) {
+      const updatedFilter = [...new Set(selectedFilter), result];
+      setSelectedFilter(updatedFilter);
+    } else {
+      // remove unChecked tags
+      const newArray = selectedFilter.filter((element) => element !== result);
+      setSelectedFilter(newArray);
+    }
+  };
+
+  //  api call on filter selected change
+  useEffect(() => {
+    GetFilterData(selectedFilter.join(' '))
+  }, [selectedFilter,selectedPriceFilter]);
 
   const handleCollection = async () => {
     await getCollections().then((res) => {
@@ -86,10 +118,19 @@ function productFilterCollection() {
     const res = await getCollectionsByHandle(data);
     setCollectionProductData(res);
   };
-
+  
   useEffect(() => {
+    FetchAllTags();
     handleCollection();
   }, []);
+
+  // PRICE FILTER 
+
+  const handePriceFilter =(data)=>{
+    setSelectedPriceFilter(data)
+    console.log("handePriceFilter",data)
+  }
+
   return (
     <div className="bg-white">
       <div>
@@ -146,11 +187,11 @@ function productFilterCollection() {
                     >
                       All Product
                     </h3>
-
-                    <h1 className="sr-only">Collection</h1>
+                  
+                <li className="sr-only font-bold">Collection</li>
                     <ul
                       role="list"
-                      className="px-2 py-3 font-medium text-gray-900"
+                      className="px-2 py-3 font-medium text-gray-900 border-b border-t border-gray-200"
                     >
                       {collectionData.length > 0 &&
                         collectionData.map((item) => (
@@ -166,7 +207,7 @@ function productFilterCollection() {
                         ))}
                     </ul>
                     <h3 className="sr-only">Categories</h3>
-                    <ul
+                    {/* <ul
                       role="list"
                       className="px-2 py-3 font-medium text-gray-900"
                     >
@@ -177,7 +218,7 @@ function productFilterCollection() {
                           </a>
                         </li>
                       ))}
-                    </ul>
+                    </ul> */}
 
                     {filters.map((section) => (
                       <Disclosure
@@ -220,6 +261,7 @@ function productFilterCollection() {
                                       defaultValue={option.value}
                                       type="checkbox"
                                       defaultChecked={option.checked}
+                                      onChange={(e) => HandelFilterSelection(e)}
                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                     />
                                     <label
@@ -275,18 +317,19 @@ function productFilterCollection() {
                       {sortOptions.map((option) => (
                         <Menu.Item key={option.name}>
                           {({ active }) => (
-                            <a
-                              href={option.href}
+                            <div
+                            
                               className={classNames(
-                                option.current
-                                  ? "font-medium text-gray-900"
-                                  : "text-gray-500",
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm"
+                                option.value === selectedPriceFilter
+                                  ? "font-medium text-orange-500"
+                                  : "text-gray-700",
+                                // active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm cursor-pointer"
                               )}
+                              onClick={()=> handePriceFilter(option.value)}
                             >
                               {option.name}
-                            </a>
+                            </div>
                           )}
                         </Menu.Item>
                       ))}
@@ -295,13 +338,13 @@ function productFilterCollection() {
                 </Transition>
               </Menu>
 
-              <button
+              {/* <button
                 type="button"
                 className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
               >
                 <span className="sr-only">View grid</span>
                 <ViewGridIcon className="h-5 w-5" aria-hidden="true" />
-              </button>
+              </button> */}
               <button
                 type="button"
                 className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
@@ -326,11 +369,12 @@ function productFilterCollection() {
                   {" "}
                   <h1 className=" font-bold cursor-pointer">All Product</h1>
                 </div>
-                <h1 className="sr-only font-bold">Collection</h1>
+                {/* <h1 className="sr-only font-bold">Collection</h1> */}
                 <ul
                   role="list"
-                  className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
+                  className="space-y-4 border-b border-t border-gray-200 pb-6 text-sm font-medium text-gray-900"
                 >
+                  <li className="sr-only font-bold">Collection</li>
                   {collectionData.length > 0 &&
                     collectionData.map((item) => (
                       <li
@@ -343,7 +387,7 @@ function productFilterCollection() {
                     ))}
                 </ul>
                 <h3 className="sr-only">Categories</h3>
-                <ul
+                {/* <ul
                   role="list"
                   className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
                 >
@@ -352,7 +396,7 @@ function productFilterCollection() {
                       <a href={category.href}>{category.name}</a>
                     </li>
                   ))}
-                </ul>
+                </ul> */}
 
                 {filters.map((section) => (
                   <Disclosure
@@ -395,6 +439,7 @@ function productFilterCollection() {
                                   defaultValue={option.value}
                                   type="checkbox"
                                   defaultChecked={option.checked}
+                                  onChange={(e) => HandelFilterSelection(e)}
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                 />
                                 <label
