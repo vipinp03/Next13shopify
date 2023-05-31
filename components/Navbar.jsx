@@ -33,9 +33,9 @@ const Navbar = () => {
   },[language])
   return (
     <>
-      <nav className="bg-[#4b148b] px-20 ">
+      <nav className="bg-[#4b148b] px-2 md:px-20 ">
         <div className="w-full mx-auto flex items-center justify-between h-16 border-b border-solid border-slate-600">
-          <div className="flex-shrink-0 font-bold tracking-wider text-white text-2xl">
+          <div className="flex-shrink-0 font-bold tracking-wider text-white md:text-2xl sm:text-xl">
             HeadLess <span className="text-orange-500">Project</span>
           </div>
           {/* MIDDEL SECTION */}
