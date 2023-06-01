@@ -83,11 +83,11 @@ export default function ProductForm({ product }) {
       }
     }
   }, [productInventory, selectedVariant])
-
+console.log("kkk",product)
   return (
     <div className="flex flex-col w-full p-4 shadow-lg rounded-2xl md:max-w-[400px]">
       <h2 className="text-2xl font-bold">{product.title}</h2>
-      <span className="pb-3">{formatter.format(product.variants.edges[0].node.priceV2.amount)}</span>
+      <span className="pb-3">{product.variants.edges[0]?.node.priceV2.amount } {product.variants.edges[0]?.node.priceV2.currencyCode }</span>
       {/* {
         product.options.map(({ name, values }) => (
           <ProductOptions

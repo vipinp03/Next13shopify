@@ -1,60 +1,137 @@
-import { Fragment, useContext } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
-import Link from "next/link";
+/* This example requires Tailwind CSS v2.0+ */
+"use client";
+import { Fragment, useRef, useState, useContext, useEffect } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { ExclamationIcon } from "@heroicons/react/outline";
 import { UserContext } from "@/context/userContext";
+import { getLanguage } from "@/lib/shopify";
+import useSWR from "swr";
 
+export default function Example() {
+  const [languageData, setlanguageData] = useState([]);
+  const [countryData, setCountryData] = useState([]);
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+  const {
+    selectLang,
+    setSelectLang,
+    selectLangPop,
+    setSelectLangPop,
+    setSelectCountry,
+    selectCountry,
+  } = useContext(UserContext);
+  const { data: language } = useSWR(["market"], getLanguage, {
+    errorRetryCount: 3,
+  });
 
-export default function Language({ languageData }) {
-  const { selectLang,setSelectLang} = useContext(UserContext);
+  console.log("selectCountry",selectCountry)
+  
+  useEffect(() => {
+    if (language !== undefined) {
+      setlanguageData(language.availableLanguages);
+      setCountryData(language.availableCountries);
+    }
+  }, [language]);
+
+  const cancelButtonRef = useRef(null);
+
   return (
-    <Menu as="div" className="relative inline-block text-left md:mx-2">
-      <div>
-        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
-          {selectLang === "" ? "Country" :selectLang}
-          <ChevronDownIcon
-            className="-mr-1 h-5 w-5 text-gray-400"
-            aria-hidden="true"
-          />
-        </Menu.Button>
-      </div>
-
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-100"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
+    <Transition.Root show={selectLangPop} as={Fragment}>
+      <Dialog
+        as="div"
+        className="fixed z-10 inset-0 overflow-y-auto"
+        initialFocus={cancelButtonRef}
+        onClose={() => setSelectLangPop(!selectLangPop)}
       >
-        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="py-1">
-            {languageData.map((item) => (
-              <Menu.Item>
-                {({ active }) => (
-                  <div
-                    className={classNames(
-                      item.endonymName === selectLang
-                        ? "bg-gray-100 text-gray-900"
-                        : "text-gray-700",
-                      "block px-4 py-2 text-sm cursor-pointer"
-                      
-                    )}
-                    onClick={()=>setSelectLang(item.endonymName)}
-                  >
-                    {item.endonymName} | {item.isoCode}
-                  </div>
-                )}
-              </Menu.Item>
-            ))}
-          </div>
-        </Menu.Items>
-      </Transition>
-    </Menu>
+        <div
+          className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block
+         sm:p-0"
+        >
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+          </Transition.Child>
+
+          {/* This element is to trick the browser into centering the modal contents. */}
+          <span
+            className="hidden sm:inline-block sm:align-middle sm:h-screen"
+            aria-hidden="true"
+          >
+            &#8203;
+          </span>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            enterTo="opacity-100 translate-y-0 sm:scale-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+          >
+            <div
+              className="inline-block align-bottom bg-white rounded-lg
+               text-left 
+            overflow-hidden shadow-xl 
+            transform transition-all 
+            sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+            >
+              <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                <label
+                  for="countries"
+                  class="block mb-2 text-sm font-medium text-gray-900 "
+                >
+                  Select an Country
+                </label>
+                <select
+                  id="countries"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                  onChange={(e) => setSelectCountry(e.target.value)}
+                >
+                  {countryData.map((item) => (
+                    <option value={item.isoCode}>{item.name}</option>
+                  ))}
+                </select>
+
+                <label
+                  for="language"
+                  class="block mb-2 text-sm font-medium text-gray-900"
+                >
+                  Select an Language
+                </label>
+
+                <select
+                  id="language"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  onChange={(e) => setSelectLang(e.target.value)}
+                >
+                  {languageData.map((item) => (
+                    <option value={item.isoCode}>{item.endonymName}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                <button
+                  type="button"
+                  className="w-full inline-flex justify-center rounded-md
+                   border border-transparent shadow-sm px-4 py-2 bg-red-600
+                    text-base font-medium text-white hover:bg-red-700 
+                    focus:outline-none focus:ring-2 focus:ring-offset-2
+                     focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
+                  onClick={() => setSelectLangPop(false)}
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+          </Transition.Child>
+        </div>
+      </Dialog>
+    </Transition.Root>
   );
 }

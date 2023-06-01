@@ -8,7 +8,8 @@ const UserContext = createContext()
 export default function UserProvider({ children }) {
   const [login, setLogin] = useState(false)
   const [selectLang,setSelectLang]=useState("")
-  
+  const [selectCountry,setSelectCountry]=useState("")
+  const [selectLangPop,setSelectLangPop]=useState(false)
   
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function UserProvider({ children }) {
   }
 
   return (
-    <UserContext.Provider value={{login,setLogin,HandelLogin,selectLang,setSelectLang}}>
+    <UserContext.Provider value={{login,setLogin,HandelLogin,selectLang,setSelectLang,selectLangPop,setSelectLangPop,selectCountry,setSelectCountry}}>
       {children}
     </UserContext.Provider>
   )
@@ -35,4 +36,6 @@ export default function UserProvider({ children }) {
 
 const UserConsumer = UserContext.Consumer
 
+
 export { UserConsumer, UserContext }
+

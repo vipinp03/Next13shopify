@@ -5,32 +5,21 @@ import { UserContext} from "../context/userContext";
 import MiniCart from "./Cart/MiniCart";
 import Menu from "./Nav/Menu";
 import Search from "./Search/search";
-import Language from "./Search/Language";
 import Link from "next/link";
-import { getLanguage } from "@/lib/shopify";
-import useSWR from 'swr'
+import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [languageData,setlanguageData]=useState([])
-  const { cart, cartOpen, setCartOpen ,selectLang,setSelectLang} = useContext(CartContext);
-  const { login } = useContext(UserContext)
-  const { data: language } = useSWR(
-    [ 'market'], getLanguage,
-    { errorRetryCount: 3 }
-  )
+  const { cart, cartOpen, setCartOpen } = useContext(CartContext);
+  const { login ,selectLang,setSelectLang,selectLangPop,setSelectLangPop,selectCountry} = useContext(UserContext)
+  
   let cartQuantity = 0;
   cart.map((item) => {
     return (cartQuantity += item?.variantQuantity);
   });
 
-  useEffect(()=>{
-    if(language !== undefined){
-      console.log("language",language)
-      setlanguageData(language.localization.availableLanguages)
-    }
-   
-  },[language])
+  
   return (
     <>
       <nav className="bg-[#4b148b] px-2 md:px-20 ">
@@ -48,7 +37,7 @@ const Navbar = () => {
               <Search />
             </div>
             <div>
-              <Language languageData={languageData}/>
+              <button onClick={()=> setSelectLangPop(!selectLangPop)} className="inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 text-orange-500"><span className={`fi fis fi-${selectCountry.toLowerCase()}`} ></span> | <span>{selectCountry}</span></button>
             </div>
             <div className="hidden md:block mx-6 md:mx-2">
               <button

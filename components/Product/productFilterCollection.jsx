@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useState ,useContext} from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import {
@@ -19,6 +19,7 @@ import {
 } from "@/lib/shopify";
 import Link from "next/link";
 import { getAllTags } from "@/lib/shopify";
+import { UserContext } from "@/context/userContext";
 
 const sortOptions = [
   { name: "Price: Low to High", value: false },
@@ -44,6 +45,7 @@ function productFilterCollection() {
   const [filters, setFilters] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState([]);
   const [selectedPriceFilter, setSelectedPriceFilter] = useState(false);
+  const {selectLang} = useContext(UserContext)
 
   // Fetch all tags 
   const FetchAllTags = async () => {
@@ -79,7 +81,7 @@ function productFilterCollection() {
   };
 // Fetching filter data 
   const GetFilterData = (Filterselect) => {
-    FilterProducts(Filterselect,selectedPriceFilter)
+    FilterProducts(Filterselect,selectedPriceFilter,selectLang)
       .then((res) => {
         setCollectionProductData(res.products.edges);
         console.log("GetFilterData", res.products.edges);
