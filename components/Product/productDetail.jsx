@@ -28,7 +28,7 @@ function productDetail({ handle }) {
                   <div className="max-w-full overflow-hidden rounded-lg">
                     <img
                       className="h-full w-full max-w-full object-cover"
-                      src={`${productDetail.images.edges[0].node.originalSrc}`}
+                      src={`${productDetail.images.edges[0]?.node.originalSrc}`}
                       alt=""
                     />
                   </div>
@@ -42,7 +42,7 @@ function productDetail({ handle }) {
                     >
                       <img
                         className="h-full w-full object-cover"
-                        src={`${productDetail.images.edges[0].node.originalSrc}`}
+                        src={`${productDetail.images.edges[0]?.node.originalSrc}`}
                         alt=""
                       />
                     </button>

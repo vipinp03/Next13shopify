@@ -789,7 +789,7 @@ self.__RSC_MANIFEST={
         "id": "(sc_client)/./context/shopContext.js",
         "name": "*",
         "chunks": [
-          "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+          "app/layout:static/chunks/app/layout.js"
         ],
         "async": false
       },
@@ -797,7 +797,7 @@ self.__RSC_MANIFEST={
         "id": "(sc_client)/./context/shopContext.js",
         "name": "",
         "chunks": [
-          "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+          "app/layout:static/chunks/app/layout.js"
         ],
         "async": false
       },
@@ -805,7 +805,7 @@ self.__RSC_MANIFEST={
         "id": "(sc_client)/./context/shopContext.js",
         "name": "CartContext",
         "chunks": [
-          "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+          "app/layout:static/chunks/app/layout.js"
         ],
         "async": false
       },
@@ -813,7 +813,7 @@ self.__RSC_MANIFEST={
         "id": "(sc_client)/./context/shopContext.js",
         "name": "ShopConsumer",
         "chunks": [
-          "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+          "app/layout:static/chunks/app/layout.js"
         ],
         "async": false
       },
@@ -821,7 +821,7 @@ self.__RSC_MANIFEST={
         "id": "(sc_client)/./context/shopContext.js",
         "name": "default",
         "chunks": [
-          "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+          "app/layout:static/chunks/app/layout.js"
         ],
         "async": false
       }
@@ -998,100 +998,6 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./components/Navbar.jsx": {
-      "*": {
-        "id": "(sc_client)/./components/Navbar.jsx",
-        "name": "*",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./components/Navbar.jsx",
-        "name": "",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./components/Navbar.jsx",
-        "name": "default",
-        "chunks": [
-          "app/layout:static/chunks/app/layout.js"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./context/userContext.js": {
-      "*": {
-        "id": "(sc_client)/./context/userContext.js",
-        "name": "*",
-        "chunks": [
-          "app/profile/page:static/chunks/app/profile/page.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./context/userContext.js",
-        "name": "",
-        "chunks": [
-          "app/profile/page:static/chunks/app/profile/page.js"
-        ],
-        "async": false
-      },
-      "UserConsumer": {
-        "id": "(sc_client)/./context/userContext.js",
-        "name": "UserConsumer",
-        "chunks": [
-          "app/profile/page:static/chunks/app/profile/page.js"
-        ],
-        "async": false
-      },
-      "UserContext": {
-        "id": "(sc_client)/./context/userContext.js",
-        "name": "UserContext",
-        "chunks": [
-          "app/profile/page:static/chunks/app/profile/page.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./context/userContext.js",
-        "name": "default",
-        "chunks": [
-          "app/profile/page:static/chunks/app/profile/page.js"
-        ],
-        "async": false
-      }
-    },
-    "(app-client)/./node_modules/next/dist/client/link.js": {
-      "*": {
-        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
-        "name": "*",
-        "chunks": [
-          "app/product/page:static/chunks/app/product/page.js"
-        ],
-        "async": false
-      },
-      "": {
-        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
-        "name": "",
-        "chunks": [
-          "app/product/page:static/chunks/app/product/page.js"
-        ],
-        "async": false
-      },
-      "default": {
-        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
-        "name": "default",
-        "chunks": [
-          "app/product/page:static/chunks/app/product/page.js"
-        ],
-        "async": false
-      }
-    },
     "(app-client)/./app/product/page.js": {
       "*": {
         "id": "(sc_client)/./app/product/page.js",
@@ -1144,6 +1050,32 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
+    "(app-client)/./node_modules/next/dist/client/link.js": {
+      "*": {
+        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
+        "name": "*",
+        "chunks": [
+          "app/Login/page:static/chunks/app/Login/page.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
+        "name": "",
+        "chunks": [
+          "app/Login/page:static/chunks/app/Login/page.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./node_modules/next/dist/client/link.js",
+        "name": "default",
+        "chunks": [
+          "app/Login/page:static/chunks/app/Login/page.js"
+        ],
+        "async": false
+      }
+    },
     "(app-client)/./app/product/[slug]/page.js": {
       "*": {
         "id": "(sc_client)/./app/product/[slug]/page.js",
@@ -1170,28 +1102,96 @@ self.__RSC_MANIFEST={
         "async": false
       }
     },
-    "(app-client)/./components/Profile/UserProfile.js": {
+    "(app-client)/./components/Navbar.jsx": {
       "*": {
-        "id": "(sc_client)/./components/Profile/UserProfile.js",
+        "id": "(sc_client)/./components/Navbar.jsx",
         "name": "*",
         "chunks": [
-          "app/profile/page:static/chunks/app/profile/page.js"
+          "app/layout:static/chunks/app/layout.js"
         ],
         "async": false
       },
       "": {
-        "id": "(sc_client)/./components/Profile/UserProfile.js",
+        "id": "(sc_client)/./components/Navbar.jsx",
         "name": "",
         "chunks": [
-          "app/profile/page:static/chunks/app/profile/page.js"
+          "app/layout:static/chunks/app/layout.js"
         ],
         "async": false
       },
       "default": {
-        "id": "(sc_client)/./components/Profile/UserProfile.js",
+        "id": "(sc_client)/./components/Navbar.jsx",
         "name": "default",
         "chunks": [
-          "app/profile/page:static/chunks/app/profile/page.js"
+          "app/layout:static/chunks/app/layout.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./context/userContext.js": {
+      "*": {
+        "id": "(sc_client)/./context/userContext.js",
+        "name": "*",
+        "chunks": [
+          "app/Login/page:static/chunks/app/Login/page.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./context/userContext.js",
+        "name": "",
+        "chunks": [
+          "app/Login/page:static/chunks/app/Login/page.js"
+        ],
+        "async": false
+      },
+      "UserConsumer": {
+        "id": "(sc_client)/./context/userContext.js",
+        "name": "UserConsumer",
+        "chunks": [
+          "app/Login/page:static/chunks/app/Login/page.js"
+        ],
+        "async": false
+      },
+      "UserContext": {
+        "id": "(sc_client)/./context/userContext.js",
+        "name": "UserContext",
+        "chunks": [
+          "app/Login/page:static/chunks/app/Login/page.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./context/userContext.js",
+        "name": "default",
+        "chunks": [
+          "app/Login/page:static/chunks/app/Login/page.js"
+        ],
+        "async": false
+      }
+    },
+    "(app-client)/./components/Login/Login.js": {
+      "*": {
+        "id": "(sc_client)/./components/Login/Login.js",
+        "name": "*",
+        "chunks": [
+          "app/Login/page:static/chunks/app/Login/page.js"
+        ],
+        "async": false
+      },
+      "": {
+        "id": "(sc_client)/./components/Login/Login.js",
+        "name": "",
+        "chunks": [
+          "app/Login/page:static/chunks/app/Login/page.js"
+        ],
+        "async": false
+      },
+      "default": {
+        "id": "(sc_client)/./components/Login/Login.js",
+        "name": "default",
+        "chunks": [
+          "app/Login/page:static/chunks/app/Login/page.js"
         ],
         "async": false
       }
@@ -2960,7 +2960,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./context/shopContext.js",
       "name": "*",
       "chunks": [
-        "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+        "app/layout:static/chunks/app/layout.js"
       ],
       "async": false
     },
@@ -2968,7 +2968,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./context/shopContext.js",
       "name": "",
       "chunks": [
-        "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+        "app/layout:static/chunks/app/layout.js"
       ],
       "async": false
     },
@@ -2976,7 +2976,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./context/shopContext.js",
       "name": "CartContext",
       "chunks": [
-        "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+        "app/layout:static/chunks/app/layout.js"
       ],
       "async": false
     },
@@ -2984,7 +2984,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./context/shopContext.js",
       "name": "ShopConsumer",
       "chunks": [
-        "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+        "app/layout:static/chunks/app/layout.js"
       ],
       "async": false
     },
@@ -2992,7 +2992,7 @@ self.__RSC_MANIFEST={
       "id": "(app-client)/./context/shopContext.js",
       "name": "default",
       "chunks": [
-        "app/product/[slug]/page:static/chunks/app/product/[slug]/page.js"
+        "app/layout:static/chunks/app/layout.js"
       ],
       "async": false
     },
@@ -3332,132 +3332,6 @@ self.__RSC_MANIFEST={
       ],
       "async": false
     },
-    "/Users/vipinpandey/Desktop/project/app/globals.css#": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/layout.css"
-      ]
-    },
-    "/Users/vipinpandey/Desktop/project/node_modules/next/font/google/target.css?{\"path\":\"app/layout.js\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}#": {
-      "id": "null",
-      "name": "default",
-      "chunks": [
-        "static/css/app/layout.css"
-      ]
-    },
-    "/Users/vipinpandey/Desktop/project/components/Navbar.jsx": {
-      "id": "(app-client)/./components/Navbar.jsx",
-      "name": "*",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/components/Navbar.jsx#": {
-      "id": "(app-client)/./components/Navbar.jsx",
-      "name": "",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/components/Navbar.jsx#default": {
-      "id": "(app-client)/./components/Navbar.jsx",
-      "name": "default",
-      "chunks": [
-        "app/layout:static/chunks/app/layout.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/context/userContext.js": {
-      "id": "(app-client)/./context/userContext.js",
-      "name": "*",
-      "chunks": [
-        "app/profile/page:static/chunks/app/profile/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/context/userContext.js#": {
-      "id": "(app-client)/./context/userContext.js",
-      "name": "",
-      "chunks": [
-        "app/profile/page:static/chunks/app/profile/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/context/userContext.js#UserConsumer": {
-      "id": "(app-client)/./context/userContext.js",
-      "name": "UserConsumer",
-      "chunks": [
-        "app/profile/page:static/chunks/app/profile/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/context/userContext.js#UserContext": {
-      "id": "(app-client)/./context/userContext.js",
-      "name": "UserContext",
-      "chunks": [
-        "app/profile/page:static/chunks/app/profile/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/context/userContext.js#default": {
-      "id": "(app-client)/./context/userContext.js",
-      "name": "default",
-      "chunks": [
-        "app/profile/page:static/chunks/app/profile/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/node_modules/next/dist/client/link.js": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "*",
-      "chunks": [
-        "app/product/page:static/chunks/app/product/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/node_modules/next/dist/esm/client/link.js": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "*",
-      "chunks": [
-        "app/product/page:static/chunks/app/product/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/node_modules/next/dist/client/link.js#": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "",
-      "chunks": [
-        "app/product/page:static/chunks/app/product/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/node_modules/next/dist/esm/client/link.js#": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "",
-      "chunks": [
-        "app/product/page:static/chunks/app/product/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/node_modules/next/dist/client/link.js#default": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "default",
-      "chunks": [
-        "app/product/page:static/chunks/app/product/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/node_modules/next/dist/esm/client/link.js#default": {
-      "id": "(app-client)/./node_modules/next/dist/client/link.js",
-      "name": "default",
-      "chunks": [
-        "app/product/page:static/chunks/app/product/page.js"
-      ],
-      "async": false
-    },
     "/Users/vipinpandey/Desktop/project/app/product/page.js": {
       "id": "(app-client)/./app/product/page.js",
       "name": "*",
@@ -3506,6 +3380,54 @@ self.__RSC_MANIFEST={
       ],
       "async": false
     },
+    "/Users/vipinpandey/Desktop/project/node_modules/next/dist/client/link.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "*",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/node_modules/next/dist/esm/client/link.js": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "*",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/node_modules/next/dist/client/link.js#": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/node_modules/next/dist/esm/client/link.js#": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/node_modules/next/dist/client/link.js#default": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "default",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/node_modules/next/dist/esm/client/link.js#default": {
+      "id": "(app-client)/./node_modules/next/dist/client/link.js",
+      "name": "default",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
     "/Users/vipinpandey/Desktop/project/app/product/[slug]/page.js": {
       "id": "(app-client)/./app/product/[slug]/page.js",
       "name": "*",
@@ -3530,27 +3452,105 @@ self.__RSC_MANIFEST={
       ],
       "async": false
     },
-    "/Users/vipinpandey/Desktop/project/components/Profile/UserProfile.js": {
-      "id": "(app-client)/./components/Profile/UserProfile.js",
-      "name": "*",
-      "chunks": [
-        "app/profile/page:static/chunks/app/profile/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/components/Profile/UserProfile.js#": {
-      "id": "(app-client)/./components/Profile/UserProfile.js",
-      "name": "",
-      "chunks": [
-        "app/profile/page:static/chunks/app/profile/page.js"
-      ],
-      "async": false
-    },
-    "/Users/vipinpandey/Desktop/project/components/Profile/UserProfile.js#default": {
-      "id": "(app-client)/./components/Profile/UserProfile.js",
+    "/Users/vipinpandey/Desktop/project/app/globals.css#": {
+      "id": "null",
       "name": "default",
       "chunks": [
-        "app/profile/page:static/chunks/app/profile/page.js"
+        "static/css/app/layout.css"
+      ]
+    },
+    "/Users/vipinpandey/Desktop/project/node_modules/next/font/google/target.css?{\"path\":\"app/layout.js\",\"import\":\"Inter\",\"arguments\":[{\"subsets\":[\"latin\"]}],\"variableName\":\"inter\"}#": {
+      "id": "null",
+      "name": "default",
+      "chunks": [
+        "static/css/app/layout.css"
+      ]
+    },
+    "/Users/vipinpandey/Desktop/project/components/Navbar.jsx": {
+      "id": "(app-client)/./components/Navbar.jsx",
+      "name": "*",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/components/Navbar.jsx#": {
+      "id": "(app-client)/./components/Navbar.jsx",
+      "name": "",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/components/Navbar.jsx#default": {
+      "id": "(app-client)/./components/Navbar.jsx",
+      "name": "default",
+      "chunks": [
+        "app/layout:static/chunks/app/layout.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/context/userContext.js": {
+      "id": "(app-client)/./context/userContext.js",
+      "name": "*",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/context/userContext.js#": {
+      "id": "(app-client)/./context/userContext.js",
+      "name": "",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/context/userContext.js#UserConsumer": {
+      "id": "(app-client)/./context/userContext.js",
+      "name": "UserConsumer",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/context/userContext.js#UserContext": {
+      "id": "(app-client)/./context/userContext.js",
+      "name": "UserContext",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/context/userContext.js#default": {
+      "id": "(app-client)/./context/userContext.js",
+      "name": "default",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/components/Login/Login.js": {
+      "id": "(app-client)/./components/Login/Login.js",
+      "name": "*",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/components/Login/Login.js#": {
+      "id": "(app-client)/./components/Login/Login.js",
+      "name": "",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
+      ],
+      "async": false
+    },
+    "/Users/vipinpandey/Desktop/project/components/Login/Login.js#default": {
+      "id": "(app-client)/./components/Login/Login.js",
+      "name": "default",
+      "chunks": [
+        "app/Login/page:static/chunks/app/Login/page.js"
       ],
       "async": false
     }
