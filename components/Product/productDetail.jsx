@@ -1,12 +1,14 @@
 "use client";
 import { getProductByHandle } from "@/lib/shopify";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect ,useContext} from "react";
 import ProductForm from "./productForm";
+import { UserContext } from '@/context/userContext';
 
 function productDetail({ handle }) {
   const [productDetail, setProductDetail] = useState({});
+  const {selectCountry,selectLang} = useContext(UserContext)
   async function fetchProductsDetail() {
-    const res = await getProductByHandle(handle);
+    const res = await getProductByHandle(handle,selectCountry,selectLang);
     if (res !== null || undefined) {
       setProductDetail(res);
     }
@@ -14,7 +16,7 @@ function productDetail({ handle }) {
   }
   useEffect(() => {
     fetchProductsDetail();
-  }, []);
+  }, [selectCountry,selectLang]);
 
   return (
     <section className="py-12 sm:py-16">
