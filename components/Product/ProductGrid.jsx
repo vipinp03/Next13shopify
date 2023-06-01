@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect ,useContext} from 'react';
 import { getProductsData } from '@/lib/shopify';
 import Link from 'next/link';
+import { UserContext } from '@/context/userContext';
 
 export default function ProductGrid({collectionProductData}) {
   const [products, setProducts] = useState([]);
+  const {selectCountry,selectLang} = useContext(UserContext)
   
 
   const fetchProducts = async()=>{
-    const res = await getProductsData();
+    const res = await getProductsData(selectCountry,selectLang);
     setProducts(res);
   }
   useEffect(() => {
@@ -20,7 +22,7 @@ export default function ProductGrid({collectionProductData}) {
     }else{
       fetchProducts()
     }
-  },[collectionProductData])
+  },[collectionProductData,selectCountry,selectLang])
 
   return (
     <div className="bg-white">

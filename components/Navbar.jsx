@@ -1,7 +1,7 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/shopContext";
-import { UserContext} from "../context/userContext";
+import { UserContext } from "../context/userContext";
 import MiniCart from "./Cart/MiniCart";
 import Menu from "./Nav/Menu";
 import Search from "./Search/search";
@@ -10,16 +10,22 @@ import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 const Navbar = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
-  const [languageData,setlanguageData]=useState([])
+  const [languageData, setlanguageData] = useState([]);
   const { cart, cartOpen, setCartOpen } = useContext(CartContext);
-  const { login ,selectLang,setSelectLang,selectLangPop,setSelectLangPop,selectCountry} = useContext(UserContext)
-  
+  const {
+    login,
+    selectLang,
+    setSelectLang,
+    selectLangPop,
+    setSelectLangPop,
+    selectCountry,
+  } = useContext(UserContext);
+
   let cartQuantity = 0;
   cart.map((item) => {
     return (cartQuantity += item?.variantQuantity);
   });
 
-  
   return (
     <>
       <nav className="bg-[#4b148b] px-2 md:px-20 ">
@@ -36,8 +42,16 @@ const Navbar = () => {
             <div className="hidden md:block ">
               <Search />
             </div>
-            <div>
-              <button onClick={()=> setSelectLangPop(!selectLangPop)} className="inline-flex items-center bg-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 text-orange-500"><span className={`fi fis fi-${selectCountry.toLowerCase()}`} ></span> | <span>{selectCountry}</span></button>
+            <div className="mx-6 md:mx-2">
+              <button
+                onClick={() => setSelectLangPop(!selectLangPop)}
+                className="flex items-center justify-between bg-white border-0 py-1 px-1 focus:outline-none hover:bg-gray-200 rounded text-base mt-0 ml-2 md:mt-0 text-orange-500"
+              >
+                <span
+                  className={`fi fis fi-${selectCountry.toLowerCase()}`}
+                ></span>{" "}
+                | <span>{selectLang}</span>
+              </button>
             </div>
             <div className="hidden md:block mx-6 md:mx-2">
               <button
@@ -62,16 +76,26 @@ const Navbar = () => {
               </button>
               <MiniCart cart={cart} />
             </div>
-            {login?
-            <Link href={login === true ?"/profile":"/Login"} className="hidden md:block">
-            <img
-              class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt=""
-            />
-          </Link>:
-          <Link href={"/Login"} className="bg-orange-500 p-1 cursor-pointer text-white rounded-sm"> Login</Link>
-          }
+            {login ? (
+              <Link
+                href={login === true ? "/profile" : "/Login"}
+                className="hidden md:block"
+              >
+                <img
+                  class="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                />
+              </Link>
+            ) : (
+              <Link
+                href={"/Login"}
+                className="bg-orange-500 p-1 cursor-pointer text-white rounded-sm"
+              >
+                {" "}
+                Login
+              </Link>
+            )}
           </div>
 
           <button
@@ -125,14 +149,20 @@ const Navbar = () => {
                 </button>
                 <MiniCart cart={cart} />
               </div>
-            {login?  <Link href={ login === true ?"/profile":"/Login"} className="md:hidden">
-              <img
-                className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                alt=""
-              />
-            </Link>: <Link href={"/Login"} > Login</Link>}
-            
+              {login ? (
+                <Link
+                  href={login === true ? "/profile" : "/Login"}
+                  className="md:hidden"
+                >
+                  <img
+                    className="inline-block h-10 w-10 rounded-full ring-2 ring-white"
+                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    alt=""
+                  />
+                </Link>
+              ) : (
+                <Link href={"/Login"}> Login</Link>
+              )}
             </div>
           )}
         </div>

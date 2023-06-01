@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useEffect, useState ,useContext} from "react";
+import { Fragment, useEffect, useState, useContext } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
 import {
@@ -33,7 +33,6 @@ const subCategories = [
   { name: "Laptop Sleeves", href: "#" },
 ];
 
-
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
@@ -45,9 +44,9 @@ function productFilterCollection() {
   const [filters, setFilters] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState([]);
   const [selectedPriceFilter, setSelectedPriceFilter] = useState(false);
-  const {selectLang} = useContext(UserContext)
+  const { selectCountry, selectLang } = useContext(UserContext);
 
-  // Fetch all tags 
+  // Fetch all tags
   const FetchAllTags = async () => {
     await getAllTags()
       .then((res) => {
@@ -79,9 +78,9 @@ function productFilterCollection() {
         console.log(err);
       });
   };
-// Fetching filter data 
+  // Fetching filter data
   const GetFilterData = (Filterselect) => {
-    FilterProducts(Filterselect,selectedPriceFilter,selectLang)
+    FilterProducts(Filterselect, selectedPriceFilter, selectCountry, selectLang)
       .then((res) => {
         setCollectionProductData(res.products.edges);
         console.log("GetFilterData", res.products.edges);
@@ -91,7 +90,7 @@ function productFilterCollection() {
       });
   };
 
-// Filter select on change
+  // Filter select on change
   const HandelFilterSelection = (e) => {
     let defaultValue = "tag";
     let result = `${defaultValue}:${e.target.value}`;
@@ -107,8 +106,8 @@ function productFilterCollection() {
 
   //  api call on filter selected change
   useEffect(() => {
-    GetFilterData(selectedFilter.join(' '))
-  }, [selectedFilter,selectedPriceFilter]);
+    GetFilterData(selectedFilter.join(" "));
+  }, [selectedFilter, selectedPriceFilter, selectCountry, selectLang]);
 
   const handleCollection = async () => {
     await getCollections().then((res) => {
@@ -117,21 +116,21 @@ function productFilterCollection() {
     });
   };
   const handelCollectionClick = async (data) => {
-    const res = await getCollectionsByHandle(data);
+    const res = await getCollectionsByHandle(data, selectCountry, selectLang);
     setCollectionProductData(res);
   };
-  
+
   useEffect(() => {
     FetchAllTags();
     handleCollection();
   }, []);
 
-  // PRICE FILTER 
+  // PRICE FILTER
 
-  const handePriceFilter =(data)=>{
-    setSelectedPriceFilter(data)
-    console.log("handePriceFilter",data)
-  }
+  const handePriceFilter = (data) => {
+    setSelectedPriceFilter(data);
+    console.log("handePriceFilter", data);
+  };
 
   return (
     <div className="bg-white">
@@ -189,8 +188,8 @@ function productFilterCollection() {
                     >
                       All Product
                     </h3>
-                  
-                <li className="sr-only font-bold">Collection</li>
+
+                    <li className="sr-only font-bold">Collection</li>
                     <ul
                       role="list"
                       className="px-2 py-3 font-medium text-gray-900 border-b border-t border-gray-200"
@@ -320,7 +319,6 @@ function productFilterCollection() {
                         <Menu.Item key={option.name}>
                           {({ active }) => (
                             <div
-                            
                               className={classNames(
                                 option.value === selectedPriceFilter
                                   ? "font-medium text-orange-500"
@@ -328,7 +326,7 @@ function productFilterCollection() {
                                 // active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm cursor-pointer"
                               )}
-                              onClick={()=> handePriceFilter(option.value)}
+                              onClick={() => handePriceFilter(option.value)}
                             >
                               {option.name}
                             </div>
@@ -462,7 +460,6 @@ function productFilterCollection() {
 
               {/* Product grid */}
               <div className="lg:col-span-3">
-                {" "}
                 <ProductGrid collectionProductData={collectionProductData} />
               </div>
             </div>

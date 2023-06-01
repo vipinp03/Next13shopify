@@ -23,7 +23,6 @@ export default function Example() {
     errorRetryCount: 3,
   });
 
-  console.log("selectCountry",selectCountry)
   
   useEffect(() => {
     if (language !== undefined) {

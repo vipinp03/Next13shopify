@@ -7,8 +7,8 @@ const UserContext = createContext()
 
 export default function UserProvider({ children }) {
   const [login, setLogin] = useState(false)
-  const [selectLang,setSelectLang]=useState("")
-  const [selectCountry,setSelectCountry]=useState("")
+  const [selectLang,setSelectLang]=useState("NL")
+  const [selectCountry,setSelectCountry]=useState("BE")
   const [selectLangPop,setSelectLangPop]=useState(false)
   
 
